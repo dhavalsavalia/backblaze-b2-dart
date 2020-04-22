@@ -5,7 +5,13 @@ class B2AuthorizeAccount {
   String url = 'https://api.backblazeb2.com/b2api/v2/b2_authorize_account';
   String applicationKeyId;
   String applicationKey;
-  Map data;
+  Map response;
+
+  // Auth Response
+  String accountId;
+  String authorizationToken;
+  String apiUrl;
+  String downloadUrl;
 
   B2AuthorizeAccount({this.applicationKeyId, this.applicationKey});
 
@@ -13,7 +19,11 @@ class B2AuthorizeAccount {
     var credentials = BasicAuthClient(applicationKeyId, applicationKey);
     await credentials.get(url).then(
       (r) {
-        data = jsonDecode(r.body);
+        response = jsonDecode(r.body);
+        accountId = response['accountId'];
+        authorizationToken = response['authorizationToken'];
+        apiUrl = response['apiUrl'];
+        downloadUrl = response['downloadUrl'];
       },
     );
   }

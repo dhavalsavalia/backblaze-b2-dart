@@ -36,7 +36,7 @@ You can find details about API Operations from [the BackBlaze B2 Docs](https://w
 
 - [ ] b2_hide_file
 
-- [ ] b2_list_buckets
+- [x] b2_list_buckets
 
 - [ ] b2_list_file_names
 
