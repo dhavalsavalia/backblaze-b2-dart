@@ -1,4 +1,5 @@
 import 'package:backblaze_b2_dart/b2_authorize_account.dart';
+import 'package:backblaze_b2_dart/b2_create_bucket.dart';
 import 'package:backblaze_b2_dart/b2_list_buckets.dart';
 import 'package:test/test.dart';
 
@@ -8,7 +9,8 @@ void main() {
   var applicationKey = ''; // Your Application Key
   var accountId = ''; // Your Account ID
   var authData; // Auth data for other tests
-  int numberOfBuckets; // Your number of buckets
+  var numberOfBuckets; // Your number of buckets
+  var bucketName; // Bucket name for b2_create_bucket
   test('b2_authorize_account implementation', () async {
     var auth = B2AuthorizeAccount(
         applicationKeyId: applicationKeyId, applicationKey: applicationKey);
@@ -26,5 +28,16 @@ void main() {
       await list_buckets.listBuckets();
       expect(list_buckets.buckets.length, equals(numberOfBuckets));
     });
+
+    test('b2_create_bucket implementation', () async {
+      var create_bucket = B2CreateBucket(
+          apiUrl: authData.apiUrl,
+          accountId: authData.accountId,
+          authorizationToken: authData.authorizationToken,
+          bucketName: bucketName);
+      await create_bucket.createBucket();
+      expect(create_bucket.data['bucketName'], equals(bucketName));
+    });
+    // TODO: Add test for bucketType with param
   });
 }
