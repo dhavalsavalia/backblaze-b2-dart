@@ -1,5 +1,6 @@
 import 'package:backblaze_b2_dart/b2_authorize_account.dart';
 import 'package:backblaze_b2_dart/b2_create_bucket.dart';
+import 'package:backblaze_b2_dart/b2_delete_bucket.dart';
 import 'package:backblaze_b2_dart/b2_list_buckets.dart';
 import 'package:backblaze_b2_dart/b2_update_bucket.dart';
 import 'package:test/test.dart';
@@ -44,13 +45,23 @@ void main() {
     // TODO: Add test for bucketType with param
 
     test('b2_update_bucket implementation', () async {
-      var create_bucket = B2UpdateBucket(
+      var update_bucket = B2UpdateBucket(
           apiUrl: authData.apiUrl,
           accountId: authData.accountId,
           authorizationToken: authData.authorizationToken,
           bucketId: bucketId);
-      await create_bucket.updateBucket();
-      expect(create_bucket.data['bucketId'], equals(bucketId));
+      await update_bucket.updateBucket();
+      expect(update_bucket.data['bucketId'], equals(bucketId));
+    });
+
+    test('b2_delete_bucket implementation', () async {
+      var delete_bucket = B2DeleteBucket(
+          apiUrl: authData.apiUrl,
+          accountId: authData.accountId,
+          authorizationToken: authData.authorizationToken,
+          bucketId: bucketId);
+      await delete_bucket.deleteBucket();
+      expect(delete_bucket.data['bucketId'], equals(bucketId));
     });
   });
 }

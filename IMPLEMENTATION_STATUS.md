@@ -10,11 +10,11 @@ You can find details about API Operations from [the BackBlaze B2 Docs](https://w
 
 - [ ] b2_copy_part
 
-- [ ] b2_create_bucket
+- [x] b2_create_bucket
 
 - [ ] b2_create_key
 
-- [ ] b2_delete_bucket
+- [x] b2_delete_bucket
 
 - [ ] b2_delete_file_version
 
@@ -50,7 +50,7 @@ You can find details about API Operations from [the BackBlaze B2 Docs](https://w
 
 - [ ] b2_start_large_file
 
-- [ ] b2_update_bucket
+- [x] b2_update_bucket
 
 - [ ] b2_upload_file
 
